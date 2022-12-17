@@ -3,31 +3,35 @@
 <head>
   <link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet'>
 
-  <title>High School Report Card Comments Generator</title>
+  <title>Report Card Comments Generator.</title>
 </head>
 <style>
   
    body {
-    background-color: black;
+    background-image: url('https://wallpaper-mania.com/wp-content/uploads/2018/09/High_resolution_wallpaper_background_ID_77700439985.jpg');
   }
 
   h1 {
     color: Black;
-    font-size: 30px;
+    font-size: 50px;
     font-style: normal;
     font-family: Impact, Arial, Helvetica, sans-serif;
     text-transform: uppercase;
     text-align: center;
-    background-color: skyblue;
+    background-image: url('https://www.novabackup.com/hs-fs/hubfs/NovaBACKUP-blog-header-1.jpg?width=1920&name=NovaBACKUP-blog-header-1.jpg');
+    stroke-width: 2px;
+    -webkit-text-stroke: 0.5px white;
+    
   } 
   .formStyle {
 	text-align: center;
-	font-size: 25px;
-	
+	font-size: 30px;
+	text-shadow: white;
 	margin-top: 01px;
 	margin-bottom: 01px;
-  color: black;
-  background-image: url('https://github.com/[droverc]/[RCgenerator]/blob/[main]/[Background.jpeg]');
+  color: white;
+  -webkit-text-stroke: 0.2px white;
+
 
 }
   input {
@@ -38,6 +42,7 @@
     margin-top: 10px;
     margin-bottom: 10px;
     color:black;
+    stroke-width: 2px;
 }
   select {
     width: 300px;
@@ -48,6 +53,8 @@
     margin-bottom: 10px;
     text-decoration-color: black;
     color: black;
+    stroke-width: 2px;
+    stroke: white;
 }
 
 button {
@@ -72,11 +79,13 @@ button {
     margin-right: 200px;
     margin-left: 200px;
     font-size: 25px;
+    text-align: left;
+    border: 5px solid black;
 
   }
 </style>
 <body>
-  <h1>High School Report Card Comments Generator</h1>
+  <h1>Report Card<br>Comment Generator</h1>
   <p class="formStyle">Enter the following information to generate a unique report card comment:</p>
   <form id="reportCardForm" class="formStyle">
     <label for="studentName">Student Name:</label><br>
@@ -85,6 +94,7 @@ button {
     <input type="text" id="subject" name="subject"><br>
     <label for="grade">Grade:</label><br>
     <select id="grade" name="grade">
+      <option value="select grade">Select</option>
       <option value="mastery">Mastery</option>
       <option value="advancing">Advancing</option>
       <option value="progressing">Progressing</option>
@@ -93,8 +103,9 @@ button {
       <option value="limited">Limited</option>
       <option value="not met">Not Met</option>
       </select><br>
-    <label for="behaviorRank">Behavior Rank:</label><br>
+    <label for="behaviorRank">Behavior:</label><br>
     <select id="behaviorRank" name="behaviorRank">
+      <option value="excellent">Select</option>
       <option value="excellent">Excellent</option>
       <option value="good">Good</option>
       <option value="needs improvement">Needs Improvement</option>
@@ -124,6 +135,10 @@ if(subject == "")
 {
   subject = "Science 9";
 }
+
+
+
+
 
 
 
