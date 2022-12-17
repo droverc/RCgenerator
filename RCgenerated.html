@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet'>
+
+  <title>High School Report Card Comments Generator</title>
+</head>
+<style>
+  
+   body {
+    background-color: black;
+  }
+  h1 {
+    color: Black;
+    font-size: 30px;
+    font-style: normal;
+    font-family: Impact, Arial, Helvetica, sans-serif;
+    text-transform: uppercase;
+    text-align: center;
+    background-color: skyblue;
+  } 
+  .formStyle {
+	text-align: center;
+	font-size: 25px;
+	background-color: skyblue;
+	margin-top: 01px;
+	margin-bottom: 01px;
+  }
+
+  .commentStyle{
+    font-family: Times New Roman;
+    background-color: lightgrey;
+    margin-top: 01px;
+    margin-bottom: 01px;
+
+  }
+</style>
+<body>
+  <h1>High School Report Card Comments Generator</h1>
+  <p class="formStyle">Enter the following information to generate a unique report card comment:</p>
+  <form id="reportCardForm" class="formStyle">
+    <label for="studentName">Student Name:</label><br>
+    <input type="text" id="studentName" name="studentName"><br>
+    <label for="subject">Subject:</label><br>
+    <input type="text" id="subject" name="subject"><br>
+    <label for="grade">Grade:</label><br>
+    <select id="grade" name="grade">
+      <option value="mastery">Mastery</option>
+      <option value="advancing">Advancing</option>
+      <option value="progressing">Progressing</option>
+      <option value="emerging">Emerging</option>
+      <option value="beginning">Beginning</option>
+      <option value="limited">Limited</option>
+      <option value="not met">Not Met</option>
+      </select><br>
+    <label for="behaviorRank">Behavior Rank:</label><br>
+    <select id="behaviorRank" name="behaviorRank">
+      <option value="excellent">Excellent</option>
+      <option value="good">Good</option>
+      <option value="needs improvement">Needs Improvement</option>
+      <option value="poor">Poor</option>
+      <option value="disruptive">Disruptive</option>
+    </select><br>
+    <input type="button" id="generateButton" value="Generate Comment" onclick="generateComment()">
+    <input type="button" id="copyComment" value="Copy Comment">
+  </form> 
+  <p class="formStyle">Report Card Comment:</p>
+  <p id="comment" class="commentStyle"></p>
+  <
+  <script>
+    function generateComment() {
+      // Get the form input values
+      var studentName = document.getElementById("studentName").value;
+      var subject = document.getElementById("subject").value;
+      var grade = document.getElementById("grade").value;
+      var behaviorRank = document.getElementById("behaviorRank").value;
+
+//default values
+if(studentName == "")
+{
+  studentName = "Jimmy";
+}
+if(subject == "")
+{
+  subject = "Science 9";
+}
+
+
+
+      // Generate a random intro sentence that informs the reader about all the units covered in the class
+      var introSentences = [
+        "During "+subject+", we covered a wide range of topics including Electricity, Biodiversity, Chemistry, Environmental Chemistry, and Space Exploration. ",
+
+        "This year in "+subject+", we delved into a diverse range of topics including Electricity, Biodiversity, Chemistry, Environmental Chemistry, and Space Exploration. ",
+
+        "Throughout " +subject+", we explored a variety of subjects including Electricity, Biodiversity, Chemistry, Environmental Chemistry, and Space Exploration. "
+      ];
+      var randomIntro = introSentences[Math.floor(Math.random() * introSentences.length)];
+
+// Add a comment about behavior to the final result
+      var behavior = "";
+      if (behaviorRank === "excellent") {
+        behavior = studentName + " has consistently demonstrated excellent behavior in this class and used their classtime effectivly. ";
+
+      } else if (behaviorRank === "good") {
+        behavior = studentName + " has generally demonstrated good behavior in class, using most of their classtime effectivly ";
+
+      } else if (behaviorRank === "needs improvement") {
+        behavior = studentName + " could benefit from working on their behavior in class. There have been instances of inapropriate use of technology and other disruptive behavior that has negatively impacted their learning and the learning of others. ";
+
+      } else if (behaviorRank === "poor") {
+        behavior = studentName + "'s behavior in class has been a significant concern. They have frequently displayed disruptive behavior inluding the inapropriate use of technology and talking over teachers and fellow students. ";
+      
+      }
+
+      // Generate random setences for each grade level
+
+      // Sentences for Mastery
+      var masterySentence = [
+           randomIntro + behavior + "Great job, " + studentName + "! Your hard work in " + subject + " has paid off with a fantastic grade of " + grade + ". Keep up the excellent effort! ",
+
+          randomIntro + behavior + "Congratulations, " + studentName + "! their dedication to " + subject + " has earned you a top-notch grade of " + grade + "." + studentName +"  is encouraged to keep up the fantastic work! ",
+
+           randomIntro + behavior + "Well done, " + studentName + "! Their exceptional performance in " + subject + " this semester has resulted in a grade of " + grade + "." +studentName+ " should keep striving for excellence! "
+        ];
+      var randomMastery = masterySentence[Math.floor(Math.random() * masterySentence.length)];
+
+      // Sentences for Advancing
+      var advancingSentence = [
+           randomIntro + behavior + "Excellent work, " + studentName + "! Your thorough understanding of the concepts in " + subject + " is reflected in your impressive grade of " + grade + ". Keep up the fantastic effort! ",
+
+          randomIntro + behavior + "Congratulations, " + studentName + "! Your strong grasp of the material in " + subject + " has resulted in a well-deserved grade of " + grade + ". Keep up the good work! ",
+
+           randomIntro + behavior + "Well done, " + studentName + "! Your dedication to learning in " + subject + " has paid off with a grade of " + grade + ". Keep striving for excellence! ",
+        ];
+      var randomadvancing = advancingSentence[Math.floor(Math.random() * advancingSentence.length)];
+
+      // Generate a unique comment based on the input values and refer to the grade value as "beginning", "emerging", "progressing", "advancing", or "mastering"
+      var comment = "";
+      if (grade === "mastery") {
+        comment = randomMastery;
+      } else if (grade === "advancing") {
+        comment = randomadvancing;
+      } else if (grade === "progressing") {
+        comment = randomIntro + studentName + " has shown an good understanding of the topics coverd in " + subject + " this semester, earning a grade of " + grade + ". With some additional effort, I'm confident that " + studentName + " can continue to improve in this subject. ";
+      } else if (grade === "emerging") {
+        comment = randomIntro + studentName + " has developed a statisfactory understanding of all the topics covered in " + subject + " this semester, earning a grade of " +  grade + ". I encourage " + studentName + " to seek extra help and put in extra effort to continue to improve in this subject. ";
+      } else if (grade === "beginning") {
+        comment = randomIntro + studentName + " has shown a basic understanding of the topics covered in " + subject + " this semester, earning a grade of " + grade + ". It is important that " + studentName + " seek extra help and utilize classtime more effectivly absorb the content. ";
+      } else if (grade === "limited") {
+        comment = randomIntro + studentName + " has shown a incomplete understanding of the topics covered in " + subject + " this semester, earning a grade of " + grade + ". It is important that " + studentName + " seek extra help and put in the reqiured study time improve their understanding of the content. ";
+      } else if (grade === "not met") {
+        comment = behaviorRank + randomIntro + studentName + " Has failed to demostrate an understanding of the outcomes covered in " + subject + " this semester, earning a grade of " + grade + ". It is important that " + studentName + " seek extra help and complete all assigned work. ";
+      }
+
+      
+
+      // Add a closing sentence wishing the student good luck in the next term
+      comment += " I wish " + studentName + " the best of luck in the next term.";
+
+      // Display the generated comment
+      document.getElementById("comment").innerHTML = comment;
+      
+      
+      
+    }
+  </script>
+</body>
+</html>
+
